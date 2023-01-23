@@ -16,11 +16,14 @@ class HelloController extends AbstractController
         ]);
     }
 
-    #[Route('/hello/liste', name: 'app_hello_liste')]
-    public function liste(): Response
+    #[Route('/film/liste', name: 'app_film')]
+    public function addFilm(): Response
     {
-        return $this->render('hello/liste.html.twig', [
+        return $this->render('film/ajouterFilm.html.twig', [
             'controller_name' => 'HelloController',
         ]);
     }
+
+    
+    
 }

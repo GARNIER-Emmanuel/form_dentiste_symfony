@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Controller film{% endblock %}
+
+{% block body %}
+
+<div>Nous sommes dans notre controller films.</div>
+
+<form action="reponseAjouterFilm.php" method="POST">
+
+<input type="text" name="nom" placeholder="nom du film">
+<input type="number" name="duree" placeholder="durée en minutes">
+
+<input type="submit" value="Envoyer" /> 
+</form>
+
+<a href="{{ path('app_hello') }}">Retour</a>
+
+{% endblock %}
