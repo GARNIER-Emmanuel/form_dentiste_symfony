@@ -7,13 +7,11 @@
 <div>Voici la liste des films : </div>
 
 {% for f in films %}
-    <p>Titre : {{f.titre}}, durée : {{f.duree}}</p>
+    <p>Titre : {{f.titre}}, durée : {{f.duree}} min.</p>
 {% endfor %}
 
 
 
-    
-   
-<a href="{{ path('app_film') }}">Ajouter un film à la liste</a><br>
+<a href="{{ path('app_addfilm') }}">Ajouter un film à la liste</a><br>
 <a href="{{ path('app_hello') }}">Retour</a>
 {% endblock %}

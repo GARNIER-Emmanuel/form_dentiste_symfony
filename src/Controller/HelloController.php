@@ -16,14 +16,7 @@ class HelloController extends AbstractController
         ]);
     }
 
-    #[Route('/film/liste', name: 'app_film')]
-    public function addFilm(): Response
-    {
-        return $this->render('film/ajouterFilm.html.twig', [
-            'controller_name' => 'HelloController',
-        ]);
-    }
-
+    
     
     
 }

@@ -3,17 +3,17 @@
 {% block title %}Mon Controller film{% endblock %}
 
 {% block body %}
+    {{ form_start(form) }}
+        {{ form_label(form.titre) }}
+        {{ form_widget(form.titre) }}
+   
+        {{ form_label(form.duree) }}
+        {{ form_widget(form.duree) }}
+        
+        {{ form_rest(form) }}
 
-<div>Nous sommes dans notre controller films.</div>
-
-<form action="reponseAjouterFilm.php" method="POST">
-
-<input type="text" name="nom" placeholder="nom du film">
-<input type="number" name="duree" placeholder="durée en minutes">
-
-<input type="submit" value="Envoyer" /> 
-</form>
-
+        <button type="submit">Enregistrer le film</button>
+    {{ form_end(form) }}
+    
 <a href="{{ path('app_hello') }}">Retour</a>
-
 {% endblock %}

@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
+
 use App\Repository\FilmRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: FilmRepository::class)]
-class Film
+class Film 
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
