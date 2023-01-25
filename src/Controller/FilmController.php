@@ -28,20 +28,68 @@ class FilmController extends AbstractController
     
     #[Route('/film/liste', name: 'app_addfilm')]
     public function addFilm(Request $request, EntityManagerInterface $entityManager): Response
-    {
+    {   
         $film = new Film();
-        
+                
         $form = $this->createForm(FilmType::class, $film);
         
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
-        
-            $entityManager->persist($film);
+
+            $entityManager->persist($film);          
             $entityManager->flush();
         }
 
         return $this->render('film/ajouterFilm.html.twig', [
+        'form' => $form->createView()
+        ]);
+    }
+
+
+    #[Route('/film/modifFilm', name: 'app_modifFilm')]
+    public function modif(?Film $film, Request $request, EntityManagerInterface $entityManager): Response
+    {   
+        if(!$film){
+            $film = new Film();
+        }
+
+        $form = $this->createForm(FilmType::class, $film);
+        
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            if(!$film->getId()){
+                $entityManager->persist($film);
+            }
             
+            $entityManager->flush();
+        
+
+        return $this->redirect($this->generateUrl('app_modifFilm',
+         ['id' => $film->getId()]));
+    }
+
+        return $this->render('film/modifFilm.html.twig', [
+            
+        'form' => $form->createView()
+        ]);
+    }
+
+
+    #[Route('/film/supp', name: 'app_supFilm')]
+    public function supFilm(Request $request, EntityManagerInterface $entityManager): Response
+    {   
+        $film = new Film();
+                
+        $form = $this->createForm(FilmType::class, $film);
+        
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+
+            $entityManager->persist($film);          
+            $entityManager->flush();
+        }
+
+        return $this->render('film/supFilm.html.twig', [
         'form' => $form->createView()
         ]);
     }

@@ -5,8 +5,9 @@
 {% block body %}
 <div>Nous sommes dans notre controller Hello sur l'action index.</div>
 
+<a href="{{ path('app_modifFilm') }}">Modifier la liste des films</a><br>
 <a href="{{ path('app_addfilm') }}">Ajouter un film</a><br>
-<a href="{{ path('app_modifFilm') }}">Voir la liste des films</a>
+<a href="{{ path('app_supFilm') }}">Supprimer un film</a><br>
 <a href="{{ path('app_film_liste') }}">Voir la liste des films</a>
 
 {% endblock %}
