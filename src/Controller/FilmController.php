@@ -77,7 +77,7 @@ class FilmController extends AbstractController
 
     #[Route('/film/supp', name: 'app_supFilm')]
     public function supFilm(Request $request, EntityManagerInterface $entityManager): Response
-    {   
+    {    
         $film = new Film();
                 
         $form = $this->createForm(FilmType::class, $film);
@@ -85,7 +85,7 @@ class FilmController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
 
-            $entityManager->persist($film);          
+            $entityManager->remove($film);          
             $entityManager->flush();
         }
 
