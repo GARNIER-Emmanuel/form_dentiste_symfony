@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/users/crud/controlleur')]
 class UsersCrudControlleurController extends AbstractController
 {
-    #[Route('/index', name: 'app_users_crud_controlleur_index', methods: ['GET'])]
+    #[Route('/', name: 'app_users_crud_controlleur_index', methods: ['GET'])]
     public function index(UsersRepository $usersRepository): Response
     {
         return $this->render('users_crud_controlleur/index.html.twig', [
@@ -25,7 +25,7 @@ class UsersCrudControlleurController extends AbstractController
     public function new(Request $request, UsersRepository $usersRepository): Response
     {
         $user = new Users();
-        $form = $this->createForm(Users1Type::class, $user);
+        $form = $this->createForm(UsersType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -51,7 +51,7 @@ class UsersCrudControlleurController extends AbstractController
     #[Route('/{id}/edit', name: 'app_users_crud_controlleur_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Users $user, UsersRepository $usersRepository): Response
     {
-        $form = $this->createForm(Users1Type::class, $user);
+        $form = $this->createForm(UsersType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
