@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Controller de connexion au compte{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+        {{ form_label(form.login) }}
+        {{ form_widget(form.login) }}
+   
+        {{ form_label(form.password) }}
+        {{ form_widget(form.password) }}
+        
+        {{ form_rest(form) }}
+
+        <button type="submit">Connexion au compte</button>
+    {{ form_end(form) }}
+    
+<a href="{{ path('app_index') }}">Retour</a>
+{% endblock %}

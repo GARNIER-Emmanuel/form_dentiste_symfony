@@ -13,12 +13,30 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ConnexionControlleurController extends AbstractController
 {
-    #[Route('/connexion/controlleur', name: 'app_connexion_controlleur')]
+    #[Route('/index', name: 'app_index')]
     public function index(): Response
     {
         return $this->render('connexion_controlleur/index.html.twig', [
             'controller_name' => 'ConnexionControlleurController',
         ]);
+    }
+
+    #[Route('/connexion', name: 'app_connexion')]
+    public function connexion(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $Connexion = new Users();
+                
+        $form = $this->createForm(UsersType::class, $Connexion);
+        
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+
+            $entityManager->persist($Connexion);          
+            $entityManager->flush();
+        }
+        return $this->render('connexion_controlleur/connexion.html.twig', [
+            'form' => $form->createView()
+            ]);
     }
 
     #[Route('/createaccount', name: 'app_register')]
@@ -40,5 +58,15 @@ class ConnexionControlleurController extends AbstractController
         ]);
     }
 
+    #[Route('/film', name: 'app_compte_liste')]
+    public function listeCompte(UsersRepository $UsersRepository): Response
+    {
+        $Users = $UsersRepository->findAll();
+
+        return $this->render('connexion_controlleur/liste.html.twig', [
+            'controller_name' => 'UsersController',
+            'Users' => $Users
+        ]);
+    }
 
 }

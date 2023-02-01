@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Controller liste des comptes{% endblock %}
+
+{% block body %}
+{#{{ dump(Users) }}#}
+<div>Voici la liste des utilisateurs : </div>
+
+{% for f in Users %}
+    <p>Login : {{f.login}}
+{% endfor %}
+
+
+
+</br></br><a href="{{ path('app_index') }}">Retour</a>
+{% endblock %}
