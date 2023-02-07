@@ -1,0 +1,174 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formulaire{% endblock %}
+
+
+{% block body %}
+<body class="bg-light">
+    
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <img class="d-block mx-auto mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="logo dentiste" width="72" height="57">
+      <h2>Votre formulaire</h2>
+      <p class="lead">Veuillez renseigner les informations demander ci-dessous.</p>
+    </div>
+
+    <div class="row g-5">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-primary">Liste de vos rendez-vous</span>
+          
+        </h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">Date commande</h6>
+            </div>
+            <input type="date" class="text-muted"></input>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">Dernier rendez-vous</h6>
+            </div>
+            <input type="date" class="text-muted"></input>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">Prochain rendez-vous</h6>
+            </div>
+            <input type="date" class="text-muted"></input>
+          </li>
+          <li class="list-group-item d-flex justify-content-between bg-light">
+            <div class="my-0">
+              <h6 class="my-0">Heure de rendez-vous</h6>
+            </div>
+              <input type="time" class="text-muted"></input>
+          </li>
+        </ul>
+
+        
+      </div>
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Informations Client</h4>
+        <form class="needs-validation" novalidate="">
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">Prénom</label>
+              <input type="text" class="form-control" id="firstName" placeholder="Prénom" value="" required="">
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Nom</label>
+              <input type="text" class="form-control" id="lastName" placeholder="Nom" value="" required="">
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="username" class="form-label">Nom du docteur</label>
+              <div class="input-group has-validation">
+                <input type="text" class="form-control" id="username" placeholder="Nom du docteur" required="">
+              <div class="invalid-feedback">
+                  Le nom de votre docteur est obligatoire.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label">Email <span class="text-muted">(Optionelle)</span></label>
+              <input type="email" class="form-control" id="email" placeholder="mail@example.com">
+              <div class="invalid-feedback">
+                S'il vous plait entrez une adresse valide.
+              </div>
+            </div>
+
+           
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">Age</label>
+              <input type="number" class="form-control" id="firstName" placeholder="Age" value="" required="">
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Sexe</label><br>
+              <input type="radio" id="contactChoice1"
+     name="contact" value="email">
+    <label for="contactChoice1">Homme</label>
+
+    <input type="radio" id="contactChoice2"
+     name="contact" value="telephone">
+    <label for="contactChoice2">Femme</label>
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+
+            <div class="col-md-5"><br>
+              <label for="country" class="form-label">Country</label><br>
+              <select class="form-select" id="country" required="">
+                <option value="">Choisir...</option>
+                <option>Triangulaire</option>
+                <option>Carré</option>
+                <option>Rond</option>
+                <option>Réctangulaire</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid country.
+              </div>
+            </div>
+
+            <div class="col-md-4"><br>
+              <label for="lastName" class="form-label">Bruxisme</label><br>
+              <input type="radio" id="contactChoice1"
+     name="contact" value="email">
+    <label for="contactChoice1">Oui</label>
+
+    <input type="radio" id="contactChoice2"
+     name="contact" value="telephone">
+    <label for="contactChoice2">Non</label>
+         </div>
+
+
+        <div class="col-md-7 col-lg-8"><br>
+        <h4 class="mb-3">Conjointe</h4>
+
+
+
+        </div>
+
+
+          <hr class="py-5 my-5">
+
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">© 2017–2022 Company Name</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
+</div>
+
+
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+      <script src="checkout.js"></script>
+  
+
+</body>
+
+
+{% endblock %}
