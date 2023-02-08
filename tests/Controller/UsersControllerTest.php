@@ -3,14 +3,14 @@
 namespace App\Test\Controller;
 
 use App\Entity\Users;
-use App\Repository\UsersRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class UsersControllerTest extends WebTestCase
 {
     private KernelBrowser $client;
-    private UsersRepository $repository;
+    private UserRepository $repository;
     private string $path = '/users/crud/controlleur/';
 
     protected function setUp(): void
@@ -73,7 +73,7 @@ class UsersControllerTest extends WebTestCase
     public function testEdit(): void
     {
         $this->markTestIncomplete();
-        $fixture = new Users();
+        $fixture = new User();
         $fixture->setLogin('My Title');
         $fixture->setPassword('My Title');
 

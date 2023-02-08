@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InfoClient{% endblock %}
+
+{% block body %}
+    <h1>InfoClient</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ info_client.id }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ info_client.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ info_client.nom }}</td>
+            </tr>
+            <tr>
+                <th>Docteur</th>
+                <td>{{ info_client.docteur }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ info_client.mail }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ info_client.age }}</td>
+            </tr>
+            <tr>
+                <th>Sexe</th>
+                <td>{{ info_client.sexe ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Forme_machoire</th>
+                <td>{{ info_client.formeMachoire }}</td>
+            </tr>
+            <tr>
+                <th>Bruxisme</th>
+                <td>{{ info_client.bruxisme ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_infoclient_index') }}">back to list</a>
+
+    <a href="{{ path('app_c_ontrolleur_info_client_crud_edit', {'id': info_client.id}) }}">edit</a>
+
+    {{ include('c_ontrolleur_info_client_crud/_delete_form.html.twig') }}
+{% endblock %}

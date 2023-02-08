@@ -11,9 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/users/crud/controlleur')]
-class UsersCrudControlleurController extends AbstractController
+class UsersController extends AbstractController
 {
-    #[Route('/', name: 'app_users_crud_controlleur_index', methods: ['GET'])]
+    #[Route('/', name: 'app_users_index', methods: ['GET'])]
     public function index(UsersRepository $usersRepository): Response
     {
         return $this->render('users_crud_controlleur/index.html.twig', [
@@ -31,7 +31,7 @@ class UsersCrudControlleurController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $usersRepository->save($user, true);
 
-            return $this->redirectToRoute('app_users_crud_controlleur_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_users_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('users_crud_controlleur/new.html.twig', [
@@ -48,7 +48,7 @@ class UsersCrudControlleurController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_users_crud_controlleur_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'app_users_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Users $user, UsersRepository $usersRepository): Response
     {
         $form = $this->createForm(UsersType::class, $user);
@@ -57,7 +57,7 @@ class UsersCrudControlleurController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $usersRepository->save($user, true);
 
-            return $this->redirectToRoute('app_users_crud_controlleur_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_users_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('users_crud_controlleur/edit.html.twig', [
@@ -66,13 +66,13 @@ class UsersCrudControlleurController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_users_crud_controlleur_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'app_users_delete', methods: ['POST'])]
     public function delete(Request $request, Users $user, UsersRepository $usersRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
             $usersRepository->remove($user, true);
         }
 
-        return $this->redirectToRoute('app_users_crud_controlleur_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_users_index', [], Response::HTTP_SEE_OTHER);
     }
 }

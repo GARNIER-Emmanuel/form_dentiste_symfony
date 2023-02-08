@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230201155909 extends AbstractMigration
+final class Version20230208161935 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,16 @@ final class Version20230201155909 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, username VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_8D93D649F85E0677 (username), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE info_client ADD sexe_id INT NOT NULL');
+        $this->addSql('ALTER TABLE info_client ADD CONSTRAINT FK_A995B03448F3B3C FOREIGN KEY (sexe_id) REFERENCES sexe (id)');
+        $this->addSql('CREATE INDEX IDX_A995B03448F3B3C ON info_client (sexe_id)');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('DROP TABLE user');
+        $this->addSql('ALTER TABLE info_client DROP FOREIGN KEY FK_A995B03448F3B3C');
+        $this->addSql('DROP INDEX IDX_A995B03448F3B3C ON info_client');
+        $this->addSql('ALTER TABLE info_client DROP sexe_id');
     }
 }

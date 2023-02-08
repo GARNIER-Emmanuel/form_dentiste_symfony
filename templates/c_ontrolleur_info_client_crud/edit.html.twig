@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit InfoClient{% endblock %}
+
+{% block body %}
+    <h1>Edit InfoClient</h1>
+
+    {{ include('c_ontrolleur_info_client_crud/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_infoclient_index') }}">back to list</a>
+
+    {{ include('c_ontrolleur_info_client_crud/_delete_form.html.twig') }}
+{% endblock %}
