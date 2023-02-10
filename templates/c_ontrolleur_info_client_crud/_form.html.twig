@@ -1,19 +1,33 @@
 {{ form_start(form) }}
     <div class="row">
-        <div class="col-12 col-md-8">
+        <div class="col-12 col-md-7">
             <h2>Informations Client</h2>
             <div class="row">
                 <div class="col-12 col-md-6">{{ form_row(form.prenom) }}</div>
                 <div class="col-12 col-md-6">{{ form_row(form.nom) }}</div>
             </div>
             <div class="row">
-                <div class="col-6">{{ form_row(form.docteur) }}</div>
+                <div class="col-12">{{ form_row(form.docteur) }}</div>
+            </div>
+            <div class="row">
+                <div class="col-12">{{ form_row(form.mail) }}</div>
+            </div>
+            <div class="row">
+                <div class="col-4">{{ form_row(form.age) }}</div>
+                <div class="col-4">{{ form_row(form.sexe) }}</div>
+                <div class="col-4">{{ form_row(form.formeMachoire) }}</div>
+            </div>
+            <div class="row">
+                <div class="col-4">Cocher si oui{{ form_row(form.bruxisme) }}</div>
             </div>
         </div>
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-5">
             <h2>Liste de vos rendez-vous</h2>
+                <div class="row">
+                    <div class="col-4">date{{ form_row(form.rendezVouses) }}</div>
+                </div>
         </div>
     </div>
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <button class="col-7 btn btn-outline-primary ">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

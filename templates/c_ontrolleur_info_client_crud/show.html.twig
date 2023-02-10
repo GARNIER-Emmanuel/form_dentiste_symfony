@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}InfoClient{% endblock %}
+{% block title %}Voir client{% endblock %}
 
 {% block body %}
-    <h1>InfoClient</h1>
+    <h1> {{ info_client.nom }} {{ info_client.prenom }}</h1>
 
     <table class="table">
         <tbody>
@@ -43,12 +43,13 @@
                 <th>Bruxisme</th>
                 <td>{{ info_client.bruxisme ? 'Yes' : 'No' }}</td>
             </tr>
+            
         </tbody>
     </table>
 
-    <a href="{{ path('app_infoclient_index') }}">back to list</a>
+    <a href="{{ path('app_infoclient_index') }}" class="col-2 btn btn-outline-primary ">Retourner à la liste</a>
 
-    <a href="{{ path('app_c_ontrolleur_info_client_crud_edit', {'id': info_client.id}) }}">edit</a>
+    <a href="{{ path('app_c_ontrolleur_info_client_crud_edit', {'id': info_client.id}) }}" class="col-2 btn btn-outline-primary ">Modifier</a>
 
     {{ include('c_ontrolleur_info_client_crud/_delete_form.html.twig') }}
 {% endblock %}

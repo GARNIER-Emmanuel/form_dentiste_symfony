@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}InfoClient index{% endblock %}
+{% block title %}Tous les clients{% endblock %}
 
 {% block body %}
-    <h1>InfoClient index</h1>
+    <h1 class="text-center">Tous les clients</h1>
 
     <table class="table">
-        <thead>
+        <thead class="text-center">
             <tr>
                 <th>Id</th>
                 <th>Prenom</th>
@@ -32,18 +32,18 @@
                 <td>{{ info_client.sexe ? 'Yes' : 'No' }}</td>
                 <td>{{ info_client.formeMachoire }}</td>
                 <td>{{ info_client.bruxisme ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('app_c_ontrolleur_info_client_crud_show', {'id': info_client.id}) }}">show</a>
-                    <a href="{{ path('app_c_ontrolleur_info_client_crud_edit', {'id': info_client.id}) }}">edit</a>
+                <td class="row">
+                    <a href="{{ path('app_c_ontrolleur_info_client_crud_show', {'id': info_client.id}) }}" class="col-6 btn btn-outline-primary ">Voir</a>
+                    <a href="{{ path('app_c_ontrolleur_info_client_crud_edit', {'id': info_client.id}) }}" class="col-6 btn btn-outline-primary ">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="10">no records found</td>
+                <td colspan="10">Aucun client enregistré</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_infoclient_new') }}">Create new</a>
+    <a href="{{ path('app_infoclient_new') }}"  class="col-12 btn btn-outline-primary ">Créer un nouveau client</a>
 {% endblock %}

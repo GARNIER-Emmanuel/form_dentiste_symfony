@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\InfoClientRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: InfoClientRepository::class)]
@@ -26,10 +28,10 @@ class InfoClient
     private ?string $mail = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $age = null;
+    private ?int $age = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $forme_machoire = null;
+    private ?String $forme_machoire = null;
 
     #[ORM\Column(nullable: true)]
     private ?bool $bruxisme = null;
@@ -37,6 +39,20 @@ class InfoClient
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Sexe $sexe = null;
+
+    #[ORM\ManyToOne(inversedBy: 'forme')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?FormeMachoire $formeMachoire = null;
+
+    #[ORM\ManyToMany(targetEntity: RendezVous::class, mappedBy: 'relation')]
+    private Collection $rendezVouses;
+
+    public function __construct()
+    {
+        $this->rendezVouses = new ArrayCollection();
+    }
+
+
 
     public function getId(): ?int
     {
@@ -91,30 +107,42 @@ class InfoClient
         return $this;
     }
 
-    public function getAge(): ?string
+    public function getAge(): ?int
     {
         return $this->age;
     }
 
-    public function setAge(string $age): self
+    public function setAge(int $age): self
     {
         $this->age = $age;
 
         return $this;
     }
 
-    public function getFormeMachoire(): ?string
+    public function getFormeMachoire(): ?FormeMachoire
+    {
+        return $this->formeMachoire;
+    }
+
+    public function setFormeMachoire(?FormeMachoire $formeMachoire): self
+    {
+        $this->formeMachoire = $formeMachoire;
+
+        return $this;
+    }
+
+    public function getFormeM(): ?String
     {
         return $this->forme_machoire;
     }
 
-    public function setFormeMachoire(string $forme_machoire): self
+    public function setFormeM(?String $forme_machoire): self
     {
         $this->forme_machoire = $forme_machoire;
 
         return $this;
     }
-
+    
     public function isBruxisme(): ?bool
     {
         return $this->bruxisme;
@@ -138,4 +166,33 @@ class InfoClient
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, RendezVous>
+     */
+    public function getRendezVouses(): Collection
+    {
+        return $this->rendezVouses;
+    }
+
+    public function addRendezVouse(RendezVous $rendezVouse): self
+    {
+        if (!$this->rendezVouses->contains($rendezVouse)) {
+            $this->rendezVouses->add($rendezVouse);
+            $rendezVouse->addRelation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRendezVouse(RendezVous $rendezVouse): self
+    {
+        if ($this->rendezVouses->removeElement($rendezVouse)) {
+            $rendezVouse->removeRelation($this);
+        }
+
+        return $this;
+    }
+
+    
 }

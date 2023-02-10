@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\FormeMachoire;
 use App\Entity\Sexe;
 use App\Entity\InfoClient;
 use Symfony\Component\Form\AbstractType;
@@ -29,8 +30,13 @@ class InfoClientType extends AbstractType
                 'choice_label' => 'nom',
                 'expanded' => true,
             ])
-            ->add('forme_machoire')
+            ->add('formeMachoire', EntityType::class, [
+                'class' => FormeMachoire::class,
+                'choice_label' => 'typeforme',
+                
+            ])
             ->add('bruxisme')
+            ->add('rendezVouses')
         ;
     }
 

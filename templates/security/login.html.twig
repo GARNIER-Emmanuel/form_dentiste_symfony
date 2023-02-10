@@ -7,10 +7,10 @@
 
 
 
-<body class="py-5 my-5 text-center">
+<body class="py-5 my-5 ">
  
 
-    <div class="w-25 container" >
+    <div class="w-25 container text-center" >
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -18,7 +18,7 @@
 
     {% if app.user %}
         <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            Vous êtes connecté en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">se déconnecter</a>
         </div>
     {% endif %}
 

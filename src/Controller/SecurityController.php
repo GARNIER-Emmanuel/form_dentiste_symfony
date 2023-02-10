@@ -31,18 +31,20 @@ class SecurityController extends AbstractController
     }
 
     #[Route(path: '/logout', name: 'app_logout')]
-    public function logout(): void
+    public function logout(): Response
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+
+        return $this->render('security/login.html.twig', []);
+        
     }
 
-    #[Route('/homepage', name: 'app_form')]
-    public function form(): Response
+    #[Route(path: '/homepage', name: 'app_homep')]
+    public function form(AuthenticationUtils $authenticationUtils): Response
     {   
        
-
-        return $this->render('pages_formulaires/formulaire.html.twig', [
-        ]);
+        $lastUsername = $authenticationUtils->getLastUsername();
+        return $this->render('pages_formulaires/formulaire.html.twig', ['last_username' => $lastUsername]);
     }
 
 }
